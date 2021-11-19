@@ -4,7 +4,18 @@ namespace Matrix
 {
     public class Matrix
     {
+        /// <summary>
+        /// Matrix rows 
+        /// <summary>
+        /// <param name="row">Number of matrix rows</param>
+        /// <returns>Returns the number of rows in a matrix</returns>
         private int Row {get; set;}
+
+        /// <summary>
+        /// Matrix columns
+        /// <summary>
+        /// <param name="column">Number of matrix columns</param>
+        /// <returns>Returns the number of columns in a matrix</returns>
         private int Column {get; set;}
         private dynamic[,] matrix;
 
@@ -21,6 +32,12 @@ namespace Matrix
             this.Column = Column;
         }
 
+        /// <summary>
+        /// Indexing for Matrix Operation
+        /// <summary>
+        /// <param name="row">Number of matrix rows</param>
+        /// <param name="column">Number of matrix columns</param>
+        /// <returns>Returns a matrix</returns>
         public dynamic this[int row, int column]
         {
             get
@@ -36,7 +53,7 @@ namespace Matrix
         /// <summary>
         /// Returns the number of rows in a matrix 
         /// <summary>
-        /// <returns></returns>
+        /// <returns>Returns the number of rows in a matrix</returns>
         public int RowsCount()
         {
             return Row;
@@ -45,7 +62,7 @@ namespace Matrix
         /// <summary>
         /// Returns the number of columns in a matrix 
         /// <summary>
-        /// <returns></returns>
+        /// <returns>Returns the number of columns in a matrix</returns>
         public int ColumnsCount()
         {
             return Column;
@@ -63,7 +80,7 @@ namespace Matrix
             {
                 for(int column = 0; column < matrix.ColumnsCount(); column++)
                 {
-                    result[row, column] = matrix[Column, row];
+                    result[row, column] = matrix[column, row];
                 }
             }
             return result;
