@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Matrix
+namespace Math
 {
     public class Matrix
     {
@@ -76,14 +76,14 @@ namespace Matrix
         /// <summary>
         /// <param name="matrix">Takes a matrix as input</param>
         /// <returns>Returns a matrix</returns>
-        public Matrix Transpose(Matrix matrix)
+        public Matrix Transpose()
         {
-            Matrix result = new Matrix(matrix.ColumnsCount(), matrix.RowsCount());
-            for(int row = 0; row < matrix.RowsCount(); row++)
+            Matrix result = new Matrix(this.ColumnsCount(), this.RowsCount());
+            for(int row = 0; row < this.RowsCount(); row++)
             {
-                for(int column = 0; column < matrix.ColumnsCount(); column++)
+                for(int column = 0; column < this.ColumnsCount(); column++)
                 {
-                    result[row, column] = matrix[column, row];
+                    result[row, column] = this[column, row];
                 }
             }
             return result;
