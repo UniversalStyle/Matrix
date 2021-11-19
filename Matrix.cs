@@ -7,17 +7,20 @@ namespace Matrix
         /// <summary>
         /// Matrix rows 
         /// <summary>
-        /// <param name="row">Number of matrix rows</param>
         /// <returns>Returns the number of rows in a matrix</returns>
         private int Row {get; set;}
 
         /// <summary>
         /// Matrix columns
         /// <summary>
-        /// <param name="column">Number of matrix columns</param>
         /// <returns>Returns the number of columns in a matrix</returns>
         private int Column {get; set;}
-        private dynamic[,] matrix;
+
+        /// <summary>
+        /// Matrix storage field
+        /// <summary>
+        /// <returns>Returns a matrix</returns>
+        private dynamic[,] matrix {get; set;}
 
         /// <summary>
         /// Constructor for matrix 
