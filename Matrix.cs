@@ -30,9 +30,9 @@ namespace Math
         /// <returns></returns>
         public Matrix(int row, int column)
         {
+            this.Row = row;
+            this.Column = column;
             this.matrix = new dynamic[row, column];
-            this.Row = Row;
-            this.Column = Column;
         }
 
         /// <summary>
@@ -45,11 +45,11 @@ namespace Math
         {
             get
             {
-                return matrix[row, column];
+                return this.matrix[row, column];
             }
             set
             {
-                matrix[row, column] = value;
+                this.matrix[row, column] = value;
             }
         }
 
@@ -83,7 +83,7 @@ namespace Math
             {
                 for(int column = 0; column < this.ColumnsCount(); column++)
                 {
-                    result[row, column] = this[column, row];
+                    result[column, row] = this[row, column];
                 }
             }
             return result;
@@ -140,7 +140,7 @@ namespace Math
         }
 
         /// <summary>
-        /// SMultiplies matrix A by matrix B
+        /// Multiplies matrix A by matrix B
         /// <summary>
         /// <param name="B">Takes matrix B at the input</param>
         /// <returns>Returns a matrix</returns>
@@ -148,7 +148,7 @@ namespace Math
         {
             if(this.ColumnsCount() == B.RowsCount())
             {
-                Matrix result = new Matrix(B.RowsCount(), B.ColumnsCount());
+                Matrix result = new Matrix(this.RowsCount(), B.ColumnsCount());
                 for(int row = 0; row < this.RowsCount(); row++)
                 {
                     for(int column = 0; column < B.ColumnsCount(); column++)
@@ -156,7 +156,7 @@ namespace Math
                         result[row, column] = 0;
                         for(int k = 0; k < this.ColumnsCount(); k++)
                         {
-                            result[row, column] = this[row, column] * B[row, column];
+                            result[row, column] += this[row, k] * B[k, column];
                         }
                     }
                 }
@@ -164,7 +164,11 @@ namespace Math
             }
             else
             {
-                throw new Exception("Error: the number of rows of matrix A must coincide with the number of rows of matrix B. ");
+                throw new Exception("Error: the number of rows of matrix A must coincide with the number of columns of matrix B." + 
+                "\nYour matrices:" +
+                "\nMatrix A: " + this.RowsCount() + " rows and " + this.ColumnsCount() + " columns" +
+                "\nMatrix B: " + B.RowsCount() + " rows and " + B.ColumnsCount() + " columns"
+                );
             }
         }
 
