@@ -5,42 +5,42 @@ namespace Math
     public class Matrix
     {
         /// <summary>
-        /// Matrix rows 
-        /// <summary>
+        /// Count of matrix rows 
+        /// </summary>
         /// <returns>Returns the number of rows in a matrix</returns>
-        private int Row {get; set;}
+        private int Rows {get; set;}
 
         /// <summary>
-        /// Matrix columns
-        /// <summary>
+        /// Count of matrix columns
+        /// </summary>
         /// <returns>Returns the number of columns in a matrix</returns>
-        private int Column {get; set;}
+        private int Columns {get; set;}
 
         /// <summary>
         /// Matrix storage field
-        /// <summary>
-        /// <returns>Returns a matrix</returns>
+        /// </summary>
+        /// <returns>Empty matrix</returns>
         private dynamic[,] matrix {get; set;}
 
         /// <summary>
         /// Constructor for matrix 
-        /// <summary>
+        /// </summary>
         /// <param name="row">Number of matrix rows</param>
         /// <param name="column">Number of matrix columns</param>
         /// <returns></returns>
         public Matrix(int row, int column)
         {
-            this.Row = row;
-            this.Column = column;
+            this.Rows = row;
+            this.Columns = column;
             this.matrix = new dynamic[row, column];
         }
 
         /// <summary>
-        /// Indexing for Matrix Operation
-        /// <summary>
+        /// Indexing for matrix operation
+        /// </summary>
         /// <param name="row">Number of matrix rows</param>
         /// <param name="column">Number of matrix columns</param>
-        /// <returns>Returns a matrix</returns>
+        /// <returns>A matrix</returns>
         public dynamic this[int row, int column]
         {
             get
@@ -55,27 +55,27 @@ namespace Math
 
         /// <summary>
         /// Returns the number of rows in a matrix 
-        /// <summary>
-        /// <returns>Returns the number of rows in a matrix</returns>
+        /// </summary>
+        /// <returns>Count of matrix rows</returns>
         public int RowsCount()
         {
-            return Row;
+            return Rows;
         }
 
         /// <summary>
         /// Returns the number of columns in a matrix 
-        /// <summary>
-        /// <returns>Returns the number of columns in a matrix</returns>
+        /// </summary>
+        /// <returns>Count of matrix columns</returns>
         public int ColumnsCount()
         {
-            return Column;
+            return Columns;
         }
 
         /// <summary>
         /// Transpose the matrix
-        /// <summary>
+        /// </summary>
         /// <param name="matrix">Takes a matrix as input</param>
-        /// <returns>Returns a matrix</returns>
+        /// <returns>A matrix</returns>
         public Matrix Transpose()
         {
             Matrix result = new Matrix(this.ColumnsCount(), this.RowsCount());
@@ -91,9 +91,9 @@ namespace Math
 
         /// <summary>
         /// Adds matrix A to matrix B
-        /// <summary>
+        /// </summary>
         /// <param name="B">Takes matrix B at the input</param>
-        /// <returns>Returns a matrix</returns>
+        /// <returns>A matrix or exception</returns>
         public Matrix Add(Matrix B)
         {
             if(this.RowsCount() == B.RowsCount() && this.ColumnsCount() == B.ColumnsCount())
@@ -116,9 +116,9 @@ namespace Math
 
         /// <summary>
         /// Subtracts matrix B from matrix A
-        /// <summary>
+        /// </summary>
         /// <param name="B">Takes matrix B at the input</param>
-        /// <returns>Returns a matrix</returns>
+        /// <returns>A matrix or exception</returns>
         public Matrix Subtraction(Matrix B)
         {
             if(this.RowsCount() == B.RowsCount() && this.ColumnsCount() == B.ColumnsCount())
@@ -141,9 +141,9 @@ namespace Math
 
         /// <summary>
         /// Multiplies matrix A by matrix B
-        /// <summary>
+        /// </summary>
         /// <param name="B">Takes matrix B at the input</param>
-        /// <returns>Returns a matrix</returns>
+        /// <returns>A matrix or exception</returns>
         public Matrix Multiply(Matrix B)
         {
             if(this.ColumnsCount() == B.RowsCount())
@@ -174,9 +174,9 @@ namespace Math
 
         /// <summary>
         /// Multiplies matrix A by a constant 
-        /// <summary>
+        /// </summary>
         /// <param name="constant">Takes constant at the input</param>
-        /// <returns>Returns a matrix</returns>
+        /// <returns>A matrix</returns>
         public Matrix Multiply(dynamic constant)
         {
             Matrix result = new Matrix(this.RowsCount(), this.ColumnsCount());
