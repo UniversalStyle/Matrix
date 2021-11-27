@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Math
+namespace LinearAlgebra
 {
     public class Matrix<T>
     {
@@ -15,7 +15,7 @@ namespace Math
         /// </summary>
         /// <returns>Returns the number of columns in a matrix</returns>
         private int Columns { get; set; }
-        
+
         /// <summary>
         /// Matrix storage field
         /// </summary>
@@ -200,7 +200,7 @@ namespace Math
         {
             return (Matrix<T>)(a.Add(b));
         }
-        
+
         /// <summary>
         /// Defining the operator for subtracting one matrix from another 
         /// </summary>
@@ -211,7 +211,7 @@ namespace Math
         {
             return (Matrix<T>)(a.Subtraction(b));
         }
-        
+
         /// <summary>
         /// Definition of the multiplication operator for two matrices 
         /// </summary>
