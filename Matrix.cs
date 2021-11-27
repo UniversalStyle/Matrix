@@ -189,5 +189,38 @@ namespace Math
             }
             return result;
         }
+
+        /// <summary>
+        /// Defining the addition operator for two matrices
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static Matrix<T> operator +(Matrix<T> a, Matrix<T> b)
+        {
+            return (Matrix<T>)(a.Add(b));
+        }
+        
+        /// <summary>
+        /// Defining the operator for subtracting one matrix from another 
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static Matrix<T> operator -(Matrix<T> a, Matrix<T> b)
+        {
+            return (Matrix<T>)(a.Subtraction(b));
+        }
+        
+        /// <summary>
+        /// Definition of the multiplication operator for two matrices 
+        /// </summary>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <returns></returns>
+        public static Matrix<T> operator *(Matrix<T> a, Matrix<T> b)
+        {
+            return (Matrix<T>)(a.Multiply(b));
+        }
     }
 }
