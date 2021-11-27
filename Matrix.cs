@@ -2,7 +2,7 @@
 
 namespace Math
 {
-    public class Matrix
+    public class Matrix<T>
     {
         /// <summary>
         /// Count of matrix rows 
@@ -15,12 +15,12 @@ namespace Math
         /// </summary>
         /// <returns>Returns the number of columns in a matrix</returns>
         private int Columns { get; set; }
-
+        
         /// <summary>
         /// Matrix storage field
         /// </summary>
         /// <returns>Empty matrix</returns>
-        private dynamic[,] matrix { get; set; }
+        private T[,] matrix { get; set; }
 
         /// <summary>
         /// Constructor for matrix 
@@ -32,7 +32,7 @@ namespace Math
         {
             this.Rows = row;
             this.Columns = column;
-            this.matrix = new dynamic[row, column];
+            this.matrix = new T[row, column];
         }
 
         /// <summary>
@@ -76,9 +76,9 @@ namespace Math
         /// </summary>
         /// <param name="matrix">Takes a matrix as input</param>
         /// <returns>A matrix</returns>
-        public Matrix Transpose()
+        public Matrix<T> Transpose()
         {
-            Matrix result = new Matrix(this.ColumnsCount(), this.RowsCount());
+            Matrix<T> result = new Matrix<T>(this.ColumnsCount(), this.RowsCount());
             for (int row = 0; row < this.RowsCount(); row++)
             {
                 for (int column = 0; column < this.ColumnsCount(); column++)
@@ -94,11 +94,11 @@ namespace Math
         /// </summary>
         /// <param name="B">Takes matrix B at the input</param>
         /// <returns>A matrix or exception</returns>
-        public Matrix Add(Matrix B)
+        public Matrix<T> Add(Matrix<T> B)
         {
             if (this.RowsCount() == B.RowsCount() && this.ColumnsCount() == B.ColumnsCount())
             {
-                Matrix result = new Matrix(B.RowsCount(), B.ColumnsCount());
+                Matrix<T> result = new Matrix<T>(B.RowsCount(), B.ColumnsCount());
                 for (int row = 0; row < this.RowsCount(); row++)
                 {
                     for (int column = 0; column < B.ColumnsCount(); column++)
@@ -119,11 +119,11 @@ namespace Math
         /// </summary>
         /// <param name="B">Takes matrix B at the input</param>
         /// <returns>A matrix or exception</returns>
-        public Matrix Subtraction(Matrix B)
+        public Matrix<T> Subtraction(Matrix<T> B)
         {
             if (this.RowsCount() == B.RowsCount() && this.ColumnsCount() == B.ColumnsCount())
             {
-                Matrix result = new Matrix(B.RowsCount(), B.ColumnsCount());
+                Matrix<T> result = new Matrix<T>(B.RowsCount(), B.ColumnsCount());
                 for (int row = 0; row < this.RowsCount(); row++)
                 {
                     for (int column = 0; column < B.ColumnsCount(); column++)
@@ -144,16 +144,16 @@ namespace Math
         /// </summary>
         /// <param name="B">Takes matrix B at the input</param>
         /// <returns>A matrix or exception</returns>
-        public Matrix Multiply(Matrix B)
+        public Matrix<T> Multiply(Matrix<T> B)
         {
             if (this.ColumnsCount() == B.RowsCount())
             {
-                Matrix result = new Matrix(this.RowsCount(), B.ColumnsCount());
+                Matrix<T> result = new Matrix<T>(this.RowsCount(), B.ColumnsCount());
                 for (int row = 0; row < this.RowsCount(); row++)
                 {
                     for (int column = 0; column < B.ColumnsCount(); column++)
                     {
-                        result[row, column] = 0;
+                        result[row, column] = (dynamic)0;
                         for (int k = 0; k < this.ColumnsCount(); k++)
                         {
                             result[row, column] += this[row, k] * B[k, column];
@@ -177,9 +177,9 @@ namespace Math
         /// </summary>
         /// <param name="constant">Takes constant at the input</param>
         /// <returns>A matrix</returns>
-        public Matrix Multiply(dynamic constant)
+        public Matrix<T> Multiply(dynamic constant)
         {
-            Matrix result = new Matrix(this.RowsCount(), this.ColumnsCount());
+            Matrix<T> result = new Matrix<T>(this.RowsCount(), this.ColumnsCount());
             for (int row = 0; row < this.RowsCount(); row++)
             {
                 for (int column = 0; column < this.ColumnsCount(); column++)
