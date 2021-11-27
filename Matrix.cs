@@ -222,5 +222,35 @@ namespace LinearAlgebra
         {
             return (Matrix<T>)(a.Multiply(b));
         }
+
+        /// <summary>
+        /// Checks if a matrix is diagonal
+        /// </summary>
+        /// <returns></returns>
+        public bool IsDiagonalMatrix()
+        {
+            for (int row = 0; row < this.RowsCount(); row++)
+            {
+                Matrix<bool> result = new Matrix<bool>(this.RowsCount(), ColumnsCount());
+                for (int column = 0; column < this.ColumnsCount(); column++)
+                {
+                    result[row, column] = true;
+                    if(row == column && this[row, column] != 0)
+                    {
+                        result[row, column] = true;
+                    }
+                    if(row != column && this[row, column] != 0)
+                    {
+                        result[row, column] = false;
+                        return false;
+                    }
+                    if(result[row, column] != true)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
     }
 }
